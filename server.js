@@ -5,6 +5,11 @@ app.use(express.static(__dirname));
 var http = require('http').Server(app); 
 var io = require('socket.io')(http); 
 
+var db_details = require('./DBDetails')
+var dbd_host = db_details.host_get(); 
+var dbd_user = db_details.user_get(); 
+var dbd_passw = db_details.password_get(); 
+var dbd_db = db_details.db_get();
 
 
 app.get('/', function(req,res) {
@@ -21,10 +26,10 @@ io.on('connection', function(socket) {
 
             // connect to database
             var conn = mysql.createConnection({
-                host : 'localhost',
-                user : 'connor',
-                password : '10Superstar',
-                database : 'DictDB'
+                host : dbd_host,
+                user : dbd_user,
+                password : dbd_passw,
+                database : dbd_db
             }); 
             // check connection
             conn.connect(function(err) {
