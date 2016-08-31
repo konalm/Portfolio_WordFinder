@@ -1,0 +1,9 @@
+{
+    "name": "word-finder",
+    "version": "0.0.1",
+    "description": "find words in the dictionary",
+    "dependencies": {
+        "express": "latest",
+        "socket.io": "latest"
+    }
+}
